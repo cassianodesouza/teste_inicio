@@ -27,4 +27,5 @@ if __name__ == '__main__': #Esse é um IF especial de Python, uma varinha magica
 
 ############################################################
 #Teste Git
-#Escrevendo pelo GIt
+#Escrevendo pelo Git
+#Escrevendo pelo Pycharm
