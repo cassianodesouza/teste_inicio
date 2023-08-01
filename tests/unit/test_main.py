@@ -6,7 +6,7 @@ import pytest
 ############################################################
 
 
-from main import somar, dividir
+from main import somar, dividir, subtrair
 
 
 ############################################################
@@ -32,7 +32,7 @@ def ler_csv(arquivo_csv):
 ############################################################
 
 
-#Teste de Unidade
+#Teste de Unidade - Somar
 def teste_somar():
     # 1- Configura
     numero_a = 8
@@ -44,6 +44,38 @@ def teste_somar():
 
     #3 - Valida
     assert resultado_obtido == resultado_esperado
+
+
+############################################################
+
+
+#Teste de Unidade - Subtrair
+def teste_subtrair():
+    # 1- Configura
+    numero_a = 15
+    numero_b = 10
+    resultado_esperado = 5
+
+    # 2- Executa
+    resultado_obtido = subtrair(numero_a, numero_b)
+
+    #3 - Valida
+    assert resultado_obtido == resultado_esperado
+
+
+############################################################
+
+
+#Teste de Unidade - Subtrair Massa CSV
+@pytest.mark.parametrize('numero_a, numero_b, resultado_esperado',ler_csv('C:\\Users\\Cassiano\PycharmProjects\pythonProject\\teste_inicio\\vendors\\CSV\\massa_teste_subtrair_positivo.csv'))
+def teste_subtrair_leitura_csv(numero_a, numero_b, resultado_esperado):
+    # 1- Configura
+
+    # 2- Executa
+    resultado_obtido = subtrair(int(numero_a), int(numero_b))
+
+    #3 - Valida
+    assert resultado_obtido == int(resultado_esperado)
 
 
 ############################################################
