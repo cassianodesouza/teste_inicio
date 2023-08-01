@@ -1,10 +1,36 @@
+import csv
+
 import pytest
 
+
 ############################################################
+
 
 from main import somar, dividir
 
+
 ############################################################
+
+
+#Definição para Leitura do CSV de Teste em Massa
+def ler_csv(arquivo_csv):
+    dados_csv = []
+    try:
+        with open(arquivo_csv, newline='') as massa:
+            campos = csv.reader(massa, delimiter=',')
+            next(campos)
+            for linha in campos:
+                dados_csv.append(linha)
+        return dados_csv
+    except FileNotFoundError:
+        print(f'Arquivo não encontrado: {arquivo_csv}')
+    except Exception as fail:
+        print(f'Falha imprevista: {fail}')
+
+
+
+############################################################
+
 
 #Teste de Unidade
 def teste_somar():
@@ -19,7 +45,9 @@ def teste_somar():
     #3 - Valida
     assert resultado_obtido == resultado_esperado
 
+
 ############################################################
+
 
 #Teste Positivo
 def teste_dividir_positivo():
@@ -37,7 +65,9 @@ def teste_dividir_positivo():
     #3-Valida
     assert resultado_obtido == resultado_esperado
 
+
 ############################################################
+
 
 #Teste Negativo
 def teste_dividir_negativo():
@@ -55,7 +85,9 @@ def teste_dividir_negativo():
     #3-Valida
     assert resultado_obtido == resultado_esperado
 
+
 ############################################################
+
 
 #Teste Somar Massificado
 
@@ -67,6 +99,7 @@ lista_de_valores = [
     (-5, 12, 7),
     (6, -3, 3)
 ]
+
 
 #Vincular a lista com o teste
 @pytest.mark.parametrize('numero_a, numero_b, resultado_esperado', lista_de_valores)
@@ -81,5 +114,22 @@ def teste_somar_leitura_de_lista(numero_a, numero_b, resultado_esperado):
 
     #3 - Valida
     assert resultado_obtido == resultado_esperado
+
+
+############################################################
+
+
+#Teste Massa em CSV
+@pytest.mark.parametrize('numero_a, numero_b, resultado_esperado', ler_csv('C:\\Users\\Cassiano\\PycharmProjects\\pythonProject\\teste_inicio\\vendors\\CSV\\massa_teste_somar_positivo.csv'))
+def teste_somar_leitura_de_csv(numero_a, numero_b, resultado_esperado):
+    # 1- Configura
+    # Utilizamos os dados na Lista de Valores como massa de teste
+
+    # 2- Executa
+    resultado_obtido = somar(int(numero_a), int(numero_b))
+
+    #3 - Valida
+    assert resultado_obtido == int(resultado_esperado)
+
 
 ############################################################
