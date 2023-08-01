@@ -28,7 +28,6 @@ def ler_csv(arquivo_csv):
         print(f'Falha imprevista: {fail}')
 
 
-
 ############################################################
 
 
