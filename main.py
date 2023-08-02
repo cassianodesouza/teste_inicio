@@ -22,6 +22,13 @@ def subtrair(numero_a, numero_b):
 
 ############################################################
 
+# Multiplicar
+def multiplicar(numero_a, numero_b):
+    return numero_a * numero_b
+
+
+############################################################
+
 # Dividir
 def dividir(numero_a, numero_b):
     try:
