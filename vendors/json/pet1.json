@@ -1,0 +1,18 @@
+{
+  "id": 1732182,
+  "category": {
+    "id": 1,
+    "name": "cachorro"
+  },
+  "name": "Biscoito",
+  "photoUrls": [
+    "string"
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "name": "castrado"
+    }
+  ],
+  "status": "available"
+}
